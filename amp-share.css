@@ -1,0 +1,229 @@
+﻿.amp-default-skin .vjs-menu-button .vjs-menu .vjs-menu-content {
+    font-size: 9.3px;
+}
+
+.amp-default-skin .vjs-menu-button .vjs-menu {
+    font-size: 9.3px;
+}
+
+.amp-default-skin .vjs-tech {
+    font-size: 9.3px;
+}
+
+.azuremediaplayer.vjs-fullscreen {
+    padding-bottom: 0px !important;
+}
+
+/* Begin fix bug 275248 Cannot see done button in caption settinng window if site override the button background color or window is too small*/
+.vjs-caption-settings button {
+    background: rgb(240,240,240);
+}
+
+.vjs-caption-settings .vjs-tracksettings {
+    bottom: 3em;
+}
+
+.vjs-caption-settings {
+    width: auto;
+    max-width: 40em;
+}
+
+/* End fix bug 275248 Cannot see done button in caption settinng window if site override the button background color or window is too small*/
+
+/* Begin CSS for amp-share plugin */
+.amp-default-skin .vjs-control-bar .amp-share-control:before {
+    width: 16px;
+    height: 16px;
+    content: url('data:image/svg+xml;charset=utf-8,%3Csvg%20version%3D%221.1%22%20id%3D%22Layer_1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20x%3D%220px%22%20y%3D%220px%22%20width%3D%2216px%22%20height%3D%2216px%22%20viewBox%3D%220%200%2016%2016%22%20style%3D%22enable-background%3Anew%200%200%2016%2016%3B%22%20xml%3Aspace%3D%22preserve%22%3E%3Cg%3E%3Cpath%20fill%3D%22%23FFFFFF%22%20class%3D%22st0%22%20d%3D%22M14.8515625%2C10.3984375c0.359375%2C0.234375%2C0.640625%2C0.5361328%2C0.84375%2C0.90625S16%2C12.0732422%2C16%2C12.5%20c0%2C0.34375-0.0664063%2C0.6679688-0.1992188%2C0.9726563s-0.3125%2C0.5703125-0.5390625%2C0.796875%20s-0.4912109%2C0.4052734-0.7929688%2C0.5351563C14.1665039%2C14.9345703%2C13.84375%2C15%2C13.5%2C15%20c-0.4794922%2C0-0.921875-0.1279297-1.328125-0.3828125c-0.5991211%2C0.453125-1.2568359%2C0.796875-1.9726563%2C1.03125%20C9.4829102%2C15.8828125%2C8.75%2C16%2C8%2C16s-1.4833984-0.1171875-2.1992188-0.3515625%20c-0.7163086-0.234375-1.3740234-0.578125-1.9726563-1.03125C3.421875%2C14.8720703%2C2.9790039%2C15%2C2.5%2C15%20c-0.34375%2C0-0.6679688-0.0654297-0.9726563-0.1953125s-0.5703125-0.3085938-0.796875-0.5351563%20s-0.4052734-0.4921875-0.5351563-0.796875C0.0649414%2C13.1679688%2C0%2C12.84375%2C0%2C12.5%20c0-0.4267578%2C0.1015625-0.8251953%2C0.3046875-1.1953125s0.484375-0.671875%2C0.84375-0.90625%20c-0.0522461-0.234375-0.0898438-0.4677734-0.1132813-0.6992188S1%2C9.234375%2C1%2C9c0-0.71875%2C0.1064453-1.4169922%2C0.3203125-2.09375%20c0.2133789-0.6767578%2C0.5166016-1.3017578%2C0.9101563-1.875c0.3930664-0.5732422%2C0.8671875-1.0810547%2C1.421875-1.5234375%20S4.8227539%2C2.7158203%2C5.5%2C2.4609375c0.0048828-0.3388672%2C0.0742188-0.6572266%2C0.2070313-0.9570313%20s0.3125-0.5595703%2C0.5390625-0.78125s0.4907227-0.3974609%2C0.7929688-0.5273438C7.3408203%2C0.0654297%2C7.6611328%2C0%2C8%2C0%20c0.3383789%2C0%2C0.6586914%2C0.0654297%2C0.9609375%2C0.1953125c0.3017578%2C0.1298828%2C0.5664063%2C0.3056641%2C0.7929688%2C0.5273438%20s0.40625%2C0.4814453%2C0.5390625%2C0.78125S10.4946289%2C2.1220703%2C10.5%2C2.4609375%20c0.6767578%2C0.2607422%2C1.2929688%2C0.6103516%2C1.8476563%2C1.0507813s1.0283203%2C0.9462891%2C1.421875%2C1.5195313%20c0.3930664%2C0.5732422%2C0.6962891%2C1.1962891%2C0.9101563%2C1.8710938C14.8930664%2C7.5771484%2C15%2C8.2763672%2C15%2C9%20c0%2C0.234375-0.0117188%2C0.4677734-0.0351563%2C0.6992188S14.9033203%2C10.1640625%2C14.8515625%2C10.3984375z%20M1%2C12.5%20c0%2C0.2080078%2C0.0390625%2C0.4033203%2C0.1171875%2C0.5859375S1.3017578%2C13.4267578%2C1.4375%2C13.5625%20c0.1352539%2C0.1357422%2C0.2939453%2C0.2421875%2C0.4765625%2C0.3203125C2.0961914%2C13.9609375%2C2.2915039%2C14%2C2.5%2C14%20c0.2080078%2C0%2C0.4033203-0.0390625%2C0.5859375-0.1171875C3.2680664%2C13.8046875%2C3.4267578%2C13.6982422%2C3.5625%2C13.5625%20c0.1352539-0.1357422%2C0.2421875-0.2939453%2C0.3203125-0.4765625S4%2C12.7080078%2C4%2C12.5s-0.0390625-0.4033203-0.1171875-0.5859375%20S3.6977539%2C11.5732422%2C3.5625%2C11.4375c-0.1357422-0.1357422-0.2944336-0.2421875-0.4765625-0.3203125%20C2.9033203%2C11.0390625%2C2.7080078%2C11%2C2.5%2C11c-0.2084961%2C0-0.4038086%2C0.0390625-0.5859375%2C0.1171875%20C1.7314453%2C11.1953125%2C1.5727539%2C11.3017578%2C1.4375%2C11.4375c-0.1357422%2C0.1357422-0.2421875%2C0.2939453-0.3203125%2C0.4765625%20S1%2C12.2919922%2C1%2C12.5z%20M8%2C15c0.6142578%2C0%2C1.2148438-0.0927734%2C1.8007813-0.2773438s1.1313477-0.4541016%2C1.6367188-0.8085938%20c-0.140625-0.2080078-0.2490234-0.4335938-0.3242188-0.6757813C11.0375977%2C12.9960938%2C11%2C12.75%2C11%2C12.5%20c0-0.34375%2C0.0649414-0.6669922%2C0.1953125-0.96875c0.1298828-0.3017578%2C0.3085938-0.5664063%2C0.5351563-0.7929688%20s0.4921875-0.40625%2C0.796875-0.5390625S13.15625%2C10%2C13.5%2C10c0.0673828%2C0%2C0.1352539%2C0.0029297%2C0.203125%2C0.0078125%20c0.0673828%2C0.0048828%2C0.1352539%2C0.0126953%2C0.203125%2C0.0234375C13.96875%2C9.6875%2C14%2C9.34375%2C14%2C9%20c0-0.609375-0.0874023-1.1962891-0.2617188-1.7617188c-0.1748047-0.5654297-0.421875-1.0888672-0.7421875-1.5703125%20s-0.7084961-0.9111328-1.1640625-1.2890625c-0.4560547-0.3779297-0.9648438-0.6835938-1.5273438-0.9179688%20c-0.09375%2C0.234375-0.2202148%2C0.4453125-0.3789063%2C0.6328125c-0.1591797%2C0.1875-0.3388672%2C0.3486328-0.5390625%2C0.484375%20c-0.2006836%2C0.1357422-0.4194336%2C0.2392578-0.65625%2C0.3125C8.4931641%2C4.9638672%2C8.25%2C5%2C8%2C5S7.5063477%2C4.9638672%2C7.2695313%2C4.890625%20c-0.2373047-0.0732422-0.4560547-0.1767578-0.65625-0.3125C6.4125977%2C4.4423828%2C6.2329102%2C4.28125%2C6.0742188%2C4.09375%20c-0.1591797-0.1875-0.2851563-0.3984375-0.3789063-0.6328125c-0.5625%2C0.234375-1.0717773%2C0.5400391-1.5273438%2C0.9179688%20c-0.4560547%2C0.3779297-0.84375%2C0.8076172-1.1640625%2C1.2890625S2.4360352%2C6.6728516%2C2.2617188%2C7.2382813%20C2.0869141%2C7.8037109%2C2%2C8.390625%2C2%2C9c0%2C0.34375%2C0.03125%2C0.6875%2C0.09375%2C1.03125%20c0.0673828-0.0107422%2C0.1352539-0.0185547%2C0.203125-0.0234375C2.3642578%2C10.0029297%2C2.4321289%2C10%2C2.5%2C10%20c0.34375%2C0%2C0.6665039%2C0.0664063%2C0.96875%2C0.1992188c0.3017578%2C0.1328125%2C0.5664063%2C0.3125%2C0.7929688%2C0.5390625%20s0.40625%2C0.4912109%2C0.5390625%2C0.7929688S5%2C12.15625%2C5%2C12.5c0%2C0.25-0.0380859%2C0.4960938-0.1132813%2C0.7382813%20C4.8110352%2C13.4804688%2C4.703125%2C13.7060547%2C4.5625%2C13.9140625c0.5048828%2C0.3544922%2C1.0507813%2C0.6240234%2C1.6367188%2C0.8085938%20S7.3852539%2C15%2C8%2C15z%20M8%2C1C7.7915039%2C1%2C7.5961914%2C1.0390625%2C7.4140625%2C1.1171875%20C7.2314453%2C1.1953125%2C7.0727539%2C1.3017578%2C6.9375%2C1.4375C6.8017578%2C1.5732422%2C6.6953125%2C1.7314453%2C6.6171875%2C1.9140625%20S6.5%2C2.2919922%2C6.5%2C2.5s0.0390625%2C0.4033203%2C0.1171875%2C0.5859375S6.8017578%2C3.4267578%2C6.9375%2C3.5625%20c0.1352539%2C0.1357422%2C0.2939453%2C0.2421875%2C0.4765625%2C0.3203125C7.5961914%2C3.9609375%2C7.7915039%2C4%2C8%2C4%20c0.2080078%2C0%2C0.4033203-0.0390625%2C0.5859375-0.1171875C8.7680664%2C3.8046875%2C8.9267578%2C3.6982422%2C9.0625%2C3.5625%20c0.1352539-0.1357422%2C0.2421875-0.2939453%2C0.3203125-0.4765625S9.5%2C2.7080078%2C9.5%2C2.5S9.4609375%2C2.0966797%2C9.3828125%2C1.9140625%20S9.1977539%2C1.5732422%2C9.0625%2C1.4375C8.9267578%2C1.3017578%2C8.7680664%2C1.1953125%2C8.5859375%2C1.1171875%20C8.4033203%2C1.0390625%2C8.2080078%2C1%2C8%2C1z%20M13.5%2C14c0.2080078%2C0%2C0.4033203-0.0390625%2C0.5859375-0.1171875%20c0.1821289-0.078125%2C0.3408203-0.1845703%2C0.4765625-0.3203125c0.1352539-0.1357422%2C0.2421875-0.2939453%2C0.3203125-0.4765625%20S15%2C12.7080078%2C15%2C12.5s-0.0390625-0.4033203-0.1171875-0.5859375S14.6977539%2C11.5732422%2C14.5625%2C11.4375%20c-0.1357422-0.1357422-0.2944336-0.2421875-0.4765625-0.3203125C13.9033203%2C11.0390625%2C13.7080078%2C11%2C13.5%2C11%20c-0.2084961%2C0-0.4038086%2C0.0390625-0.5859375%2C0.1171875c-0.1826172%2C0.078125-0.3413086%2C0.1845703-0.4765625%2C0.3203125%20c-0.1357422%2C0.1357422-0.2421875%2C0.2939453-0.3203125%2C0.4765625S12%2C12.2919922%2C12%2C12.5s0.0390625%2C0.4033203%2C0.1171875%2C0.5859375%20S12.3017578%2C13.4267578%2C12.4375%2C13.5625c0.1352539%2C0.1357422%2C0.2939453%2C0.2421875%2C0.4765625%2C0.3203125%20C13.0961914%2C13.9609375%2C13.2915039%2C14%2C13.5%2C14z%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E');
+}
+
+.amp-default-skin .vjs-sharepanel div {
+    font-size: 9.3px;
+}
+
+.amp-default-skin .vjs-sharepanel {
+    background-color: #000000;
+    opacity: .75;
+    max-width: 720px;
+    max-height: 405px;
+    width: 100%;
+    height: 90%;
+    margin: 0 auto;
+    overflow: auto;
+    position: relative;
+    text-align: left;
+}
+
+.amp-default-skin .vjs-sharepanel-controls {
+    margin-left: 36px;
+    margin-right: 36px;
+    margin-bottom: 46px;
+}
+
+.amp-default-skin .vjs-sharepanel-header {
+    height: 29px;
+}
+
+.amp-default-skin .vjs-sharepanel-close a {
+    float: right;
+    margin-right: -23px;
+    margin-top: 13px;
+}
+
+.amp-default-skin .vjs-sharepanel-close-image:before {
+    width: 16px;
+    height: 16px;
+    content: url('data:image/svg+xml;charset=utf-8,%3Csvg%20version%3D%221.1%22%20id%3D%22Layer_1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20x%3D%220px%22%20y%3D%220px%22%20width%3D%2216px%22%20height%3D%2216px%22%20viewBox%3D%220%200%2016%2016%22%20style%3D%22enable-background%3Anew%200%200%2016%2016%3B%22%20xml%3Aspace%3D%22preserve%22%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E.st0%7Bfill%3A%23FFFFFF%3B%7D%3C%2Fstyle%3E%3Cg%3E%3Cpath%20class%3D%22st0%22%20d%3D%22M8.515625%2C7.6269531L15.2539063%2C14.375L14.375%2C15.2539063L7.6269531%2C8.515625l-6.7480469%2C6.7382813L0%2C14.375%2Cl6.7382813-6.7480469L0%2C0.8789063L0.8789063%2C0l6.7480469%2C6.7382813L14.375%2C0l0.8789063%2C0.8789063L8.515625%2C7.6269531z%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E');
+}
+
+.amp-default-skin .vjs-sharePopup-Closeimage:before {
+    width: 16px;
+    height: 16px;
+    content: url('data:image/svg+xml;charset=utf-8,%3Csvg%20version%3D%221.1%22%20id%3D%22Layer_1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20x%3D%220px%22%20y%3D%220px%22%20width%3D%2216px%22%20height%3D%2216px%22%20viewBox%3D%220%200%2016%2016%22%20style%3D%22enable-background%3Anew%200%200%2016%2016%3B%22%20xml%3Aspace%3D%22preserve%22%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E.st0%7Bfill%3A%23464646%3B%7D%3C%2Fstyle%3E%3Cg%3E%3Cpath%20class%3D%22st0%22%20d%3D%22M8.515625%2C7.6269531L15.2539063%2C14.375L14.375%2C15.2539063L7.6269531%2C8.515625l-6.7480469%2C6.7382813L0%2C14.375%2Cl6.7382813-6.7480469L0%2C0.8789063L0.8789063%2C0l6.7480469%2C6.7382813L14.375%2C0l0.8789063%2C0.8789063L8.515625%2C7.6269531z%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E');
+}
+
+
+.amp-default-skin .screen-reader-text {
+    display: none;
+}
+
+.amp-default-skin .vjs-shareoptions label {
+    font-size: 2.6em;
+    font-family: "Segoe UI Semilight", "Segoe UI", "Helvetica Neue", "Arial";
+    color: #FFFFFF;
+    padding-top: 2px;
+    padding-bottom: 3px;
+}
+
+.amp-default-skin .vjs-shareoptions hr {
+    margin-top: 8px;
+    margin-bottom: 24px;
+}
+
+.amp-default-skin .vjs-shareoptions-social {
+    margin-bottom: 46px;
+}
+
+.amp-default-skin .vjs-shareoptions-socialIcons {
+    min-height: 32px;
+}
+
+.amp-default-skin .vjs-share-socialIcon {
+    margin-right: 60px;
+    float: left;
+}
+
+    .amp-default-skin .vjs-share-socialIcon img {
+        width: 32px !important;
+        height: 32px !important;
+    }
+
+.amp-default-skin .vjs-sharepanel button {
+    width: 120px;
+    font-family: "Segoe UI Semilight", "Segoe UI", "Helvetica Neue", "Arial";
+    font-size: 1.7em;
+    background-color: #3176BB;
+    border: 0px;
+    height: 32px;
+    color: #FFFFFF;
+    padding: 0px;
+}
+
+.amp-default-skin .vjs-shareoptions-link {
+    width: 100%;
+    padding-right: 6%;
+    float: left;
+}
+
+.amp-default-skin .vjs-shareoptions-embed {
+    width: 50%;
+    float: left;
+}
+
+    .amp-default-skin .vjs-shareoptions-embed button {
+        float: right;
+    }
+
+.amp-default-skin .vjs-shareoptions-embedOption {
+    margin-right: 6px;
+    float: left;
+}
+
+.amp-copy-toast {
+    
+    width:100px;
+    height:20px;
+    height:auto;
+    position:absolute;
+    left:50%;
+    margin-left:-100px;
+    bottom:10px;
+    background-color: #383838;
+    color: #F0F0F0;
+    font-family: Calibri;
+    font-size: 20px;
+    padding:10px;
+    text-align:center;
+    border-radius: 2px;
+    -webkit-box-shadow: 0px 0px 24px -1px rgba(56, 56, 56, 1);
+    -moz-box-shadow: 0px 0px 24px -1px rgba(56, 56, 56, 1);
+    box-shadow: 0px 0px 24px -1px rgba(56, 56, 56, 1);
+}
+
+    .amp-default-skin .vjs-shareoptions-embedOption label {
+        font-size: 1.7em;
+        vertical-align: middle;
+        display: inline;
+    }
+
+    .amp-default-skin .vjs-shareoptions-embedOption input {
+        vertical-align: middle;
+        margin-right: 9px;
+        -webkit-appearance: radio;
+        -webkit-border-radius: 0;
+    }
+
+.amp-default-skin .vjs-sharePanel-CopyConfirmPopupContainer {
+    position: absolute;
+    background: #FFFFFF;
+    border: 1px solid #717171;
+    top: 24%;
+    left: 18%;
+    width: 61%;
+    padding: 14px;
+}
+
+    .amp-default-skin .vjs-sharePanel-CopyConfirmPopupContainer label {
+        font-size: 2.6em;
+        font-family: "Segoe UI Semilight", "Segoe UI", "Helvetica Neue", "Arial";
+        color: #464646;
+        padding-top: 2px;
+        padding-bottom: 2px;
+        margin-bottom: 22px;
+        display: block;
+    }
+
+    .amp-default-skin .vjs-sharePanel-CopyConfirmPopupContainer a {
+        float: right;
+    }
+
+
+    .amp-default-skin .vjs-sharePanel-CopyConfirmPopupContainer textarea {
+        font-size: 1.5em;
+        font-family: "Segoe UI Semilight", "Segoe UI", "Helvetica Neue", "Arial";
+        color: #464646;
+        width: 100%;
+        display: block;
+        margin-left: -1px;
+        margin-bottom: 26px;
+        height: 42px;
+        resize: none;
+        padding: 0px;
+        border: 1px solid #969696;
+    }
+
+    .amp-default-skin .vjs-sharePanel-CopyConfirmPopupContainer button {
+        float: right;
+    }
+
+/* End CSS for amp-share plugin */

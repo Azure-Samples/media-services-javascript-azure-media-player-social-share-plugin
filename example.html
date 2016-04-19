@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Azure Media Player</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-1.12.1.min.js" ></script>
+<!--*****START OF Azure Media Player Scripts*****-->
+    <link href="//amp.azure.net/libs/amp/latest/skins/amp-default/azuremediaplayer.min.css" rel="stylesheet">
+    <script src="//amp.azure.net/libs/amp/latest/azuremediaplayer.min.js"></script>
+    <!--Load Plugins-->
+    <link href="amp-share.css" rel="stylesheet">
+    <script src="amp-share.js"></script>
+    
+
+    <!--*****END OF Azure Media Player Scripts*****-->
+
+</head>
+<body>
+    <h1>Plugin: Social Media Share</h1>
+   
+    <video id="azuremediaplayer" class="azuremediaplayer amp-default-skin amp-big-play-centered" tabindex="0"> </video>
+    
+    <script>
+        $(document).ready(function () {
+            var myOptions = {
+                "nativeControlsForTouch": false,
+                autoplay: true,
+                controls: true,
+                width: "640",
+                height: "400",
+                poster: "",
+
+                plugins: {
+
+               
+              
+
+        }
+
+                
+            };
+            var myPlayer = amp("azuremediaplayer", myOptions, function () {
+                //this is the Ready function, which executes after the player is loaded.
+                console.log('Good to go!');
+
+                console.log(this.currentTechName());
+                this.addEventListener(amp.eventName.loadedmetadata, function () {
+                    
+                    var shareOption = new Amp.Plugin.Share.ShareOptions;
+                    shareOption.socialShare.shareIcons.push(Amp.Plugin.Share.SocialShareIcon.getPredefinedShareIcon(0 /* Facebook */));
+                    shareOption.socialShare.shareIcons.push(Amp.Plugin.Share.SocialShareIcon.getPredefinedShareIcon(1 /* Twitter */));
+                    shareOption.socialShare.shareIcons.push(Amp.Plugin.Share.SocialShareIcon.getPredefinedShareIcon(2 /* LinkedIn */));
+                    shareOption.socialShare.shareIcons.push(Amp.Plugin.Share.SocialShareIcon.getPredefinedShareIcon(3 /* Mail */));
+                    this.share(shareOption);
+
+
+
+                });
+
+                            });
+
+            myPlayer.src([{ src: "http://amssamples.streaming.mediaservices.windows.net/91492735-c523-432b-ba01-faba6c2206a2/AzureMediaServicesPromo.ism/manifest", type: "application/vnd.ms-sstr+xml" }, ]);
+        });
+    </script>
+
+   
+    <footer>
+        <br />
+        <p>© Microsoft Corporation 2016</p>
+    </footer>
+
+</body>
+</html>
