@@ -23,8 +23,16 @@ Include the plugin CSS/javascript*after* the AMP script in the `<head>` of your 
 
 See example.html for how to enable the plugin 
 ## Options
+Options are set up directly before plugin initialization (see comments in example.html) 
 
-Options currently not supported on this plugin but are on the to-do list
+The currently supported options are: Facebook status update, Twitter, Linkedin, and Email included like so:  
+```var shareOption = new Amp.Plugin.Share.ShareOptions;```
+                    ````shareOption.socialShare.shareIcons.push(Amp.Plugin.Share.SocialShareIcon.getPredefinedShareIcon(0 /* Facebook */));````
+                    ```shareOption.socialShare.shareIcons.push(Amp.Plugin.Share.SocialShareIcon.getPredefinedShareIcon(1 /* Twitter */));```
+                    ```shareOption.socialShare.shareIcons.push(Amp.Plugin.Share.SocialShareIcon.getPredefinedShareIcon(2 /* LinkedIn */));```
+                   ``` shareOption.socialShare.shareIcons.push(Amp.Plugin.Share.SocialShareIcon.getPredefinedShareIcon(3 /* Mail */));```
+
+Feel free to include them all (or just some) or write your own.
 
 ##To-Do
-include options support so users can chose which social network share options are displayed on the menu  
+  
