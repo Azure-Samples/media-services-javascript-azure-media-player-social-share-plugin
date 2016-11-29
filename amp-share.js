@@ -251,6 +251,7 @@ var Amp;
             var AmpShareService = (function () {
                 function AmpShareService() {
                 }
+                var Component = amp.getComponent('Component');
                 AmpShareService.addShareToPlayer = function (player, options) {
                     AmpShareService.registerShareButton();
                     AmpShareService.registerSharePanel();
@@ -290,14 +291,14 @@ var Amp;
                     Share.defaultMessageLoggerMethod("AmpShare.panelCloseButtonClicked", false);
                 };
                 AmpShareService.linkShareButtonClick = function (element) {
-                    AmpShareService.openCopyConfirmPopup(element, vjs.util.htmlEncode(element.localize("Link")), Share.getCurrentPageUrl());
+                    AmpShareService.openCopyConfirmPopup(element, element.htmlEncode(element.localize("Link")), Share.getCurrentPageUrl());
                     Share.defaultMessageLoggerMethod("AmpShare.linkShareButtonClicked", false);
                 };
                 AmpShareService.embedShareButtonClick = function (element) {
                     var choosedSize = element.el().querySelector("." + AmpShareService.embedLinksContainerClassName + " input:checked");
                     if (choosedSize) {
                         var copiedContent = "<iframe src=\"" + choosedSize.ampShareConfig.iframeUrl + "\" frameborder= \"0\" marginwidth= \"0\" marginheight= \"0\" scrolling= \"no\" allowfullscreen= \"\" style=\"width: " + choosedSize.ampShareConfig.iframeWidth + "px; height: " + choosedSize.ampShareConfig.iframeHeight + "px;\"></iframe>";
-                        AmpShareService.openCopyConfirmPopup(element, vjs.util.htmlEncode(element.localize("Embed Code")), copiedContent);
+                        AmpShareService.openCopyConfirmPopup(element, element.htmlEncode(element.localize("Embed Code")), copiedContent);
                         Share.defaultMessageLoggerMethod("AmpShare.embedShareButtonClickedWithSelected: width-" + choosedSize.ampShareConfig.iframeWidth + ", height-" + choosedSize.ampShareConfig.iframeHeight, false);
                     }
                     else {
@@ -311,23 +312,24 @@ var Amp;
                 };
                 AmpShareService.popupCloseClick = function (component) {
                     var container = component.el().querySelector("." + AmpShareService.copyConfirmPopupContainerClassName);
-                    vjs.addClass(container, AmpShareService.vjsHiddenClassName);
+                    videojs.addClass(container, AmpShareService.vjsHiddenClassName);
                     Share.defaultMessageLoggerMethod("AmpShare.popupCloseClicked", false);
                 };
                 AmpShareService.registerShareButton = function () {
                     if (amp.ShareButton) {
                         return;
                     }
-                    amp.ShareButton = amp.Button.extend({
+                    var MenuButton = amp.getComponent('MenuButton');
+                    amp.ShareButton = amp.extend(MenuButton, {
                         init: function (player, options) {
                             options = options || {};
                             options.name = "shareButton";
-                            amp.Button.call(this, player, options);
+                            MenuButton.call(this, player, options);
                         }
                     });
                     amp.ShareButton.prototype.buttonText = "Share";
                     amp.ShareButton.prototype.buildCSSClass = function () {
-                        return "amp-share-control " + vjs.Button.prototype.buildCSSClass.call(this) + " ";
+                        return "amp-share-control " + MenuButton.prototype.buildCSSClass.call(this) + " ";
                     };
                     amp.ShareButton.prototype.onClick = function () {
                         var player = this.player();
@@ -343,18 +345,18 @@ var Amp;
                     };
                 };
                 AmpShareService.registerSharePanel = function () {
-                    if (vjs.SharePanel) {
+                    if (amp.SharePanel) {
                         return;
                     }
-                    vjs.SharePanel = vjs.Component.extend({
+                    amp.SharePanel = amp.extend(Component, {
                         init: function (player, options) {
-                            vjs.Component.call(this, player, options);
+                            Component.call(this, player, options);
                             this.hide();
                             AmpShareService.updateSharePanel(this, options);
                         }
                     });
-                    vjs.SharePanel.prototype.createEl = function () {
-                        var element = vjs.Component.prototype.createEl.call(this, "div", {
+                    amp.SharePanel.prototype.createEl = function () {
+                        var element = Component.prototype.createEl.call(this, "div", {
                             className: "vjs-sharepanel",
                             innerHTML: AmpShareService.getSharePanelTemplate(this)
                         });
@@ -362,16 +364,16 @@ var Amp;
                     };
                 };
                 AmpShareService.updateEmbedShare = function (component, options) {
-                    vjs.on(component.el().querySelector("." + AmpShareService.embedShareContainerClassName + " > button"), "click", function () {
+                    videojs.on(component.el().querySelector("." + AmpShareService.embedShareContainerClassName + " > button"), "click", function () {
                         AmpShareService.embedShareButtonClick(component);
                     });
                     if (!options || !options.isEnable) {
-                        vjs.addClass(component.el().querySelector("." + AmpShareService.embedShareContainerClassName), AmpShareService.vjsHiddenClassName);
+                        videojs.addClass(component.el().querySelector("." + AmpShareService.embedShareContainerClassName), AmpShareService.vjsHiddenClassName);
                         return;
                     }
                     if (!options.candidateLinks || options.candidateLinks.length <= 0) {
                         Share.defaultMessageLoggerMethod("AmpShare.noEmbedShareOption", false);
-                        vjs.addClass(component.el().querySelector("." + AmpShareService.embedShareContainerClassName), AmpShareService.vjsHiddenClassName);
+                        videojs.addClass(component.el().querySelector("." + AmpShareService.embedShareContainerClassName), AmpShareService.vjsHiddenClassName);
                         return;
                     }
                     var validCandidateLink = 0;
@@ -386,7 +388,7 @@ var Amp;
                             Share.defaultMessageLoggerMethod("AmpShare.invalidEmbedLinkShareOption : " + validationError, true);
                             continue;
                         }
-                        var linkRadioNode = vjs.Component.prototype.createEl.call(component, "input", {
+                        var linkRadioNode = Component.prototype.createEl.call(component, "input", {
                             "type": "radio",
                             "name": "embedsize",
                             "ampShareConfig": candidateLink
@@ -397,29 +399,29 @@ var Amp;
                         }
                         if (!candidateLink.text) {
                         }
-                        var linkLabel = vjs.Component.prototype.createEl.call(component, "label", {
+                        var linkLabel = Component.prototype.createEl.call(component, "label", {
                             innerHTML: candidateLink.text
                         });
                         component.el().querySelector("." + AmpShareService.embedLinksContainerClassName).appendChild(linkRadioNode);
                         component.el().querySelector("." + AmpShareService.embedLinksContainerClassName).appendChild(linkLabel);
-                        component.el().querySelector("." + AmpShareService.embedLinksContainerClassName).appendChild(vjs.Component.prototype.createEl.call(component, "br"));
+                        component.el().querySelector("." + AmpShareService.embedLinksContainerClassName).appendChild(Component.prototype.createEl.call(component, "br"));
                         validCandidateLink++;
                     }
                     if (validCandidateLink > 0) {
-                        vjs.removeClass(component.el().querySelector("." + AmpShareService.embedShareContainerClassName), AmpShareService.vjsHiddenClassName);
+                        videojs.removeClass(component.el().querySelector("." + AmpShareService.embedShareContainerClassName), AmpShareService.vjsHiddenClassName);
                     }
                     else {
                         Share.defaultMessageLoggerMethod("AmpShare.noVisibleEmbedShareOption", false);
-                        vjs.addClass(component.el().querySelector("." + AmpShareService.embedShareContainerClassName), AmpShareService.vjsHiddenClassName);
+                        videojs.addClass(component.el().querySelector("." + AmpShareService.embedShareContainerClassName), AmpShareService.vjsHiddenClassName);
                     }
                 };
                 AmpShareService.updateSocialShare = function (component, options) {
                     var socialIconsContainer = component.el().querySelector("." + AmpShareService.socialIconsContainerClassName);
                     if (!options || !options.isEnable) {
-                        vjs.addClass(socialIconsContainer, AmpShareService.vjsHiddenClassName);
+                        videojs.addClass(socialIconsContainer, AmpShareService.vjsHiddenClassName);
                         return;
                     }
-                    vjs.removeClass(socialIconsContainer, AmpShareService.vjsHiddenClassName);
+                    videojs.removeClass(socialIconsContainer, AmpShareService.vjsHiddenClassName);
                     while (socialIconsContainer.lastChild) {
                         socialIconsContainer.removeChild(socialIconsContainer.lastChild);
                     }
@@ -438,13 +440,13 @@ var Amp;
                             Share.defaultMessageLoggerMethod("AmpShare.invalidSocialShareOption : " + validationError, true);
                             break;
                         }
-                        var iconNode = vjs.Component.prototype.createEl.call(component, "div", {
+                        var iconNode = Component.prototype.createEl.call(component, "div", {
                             className: "vjs-share-socialIcon",
                             innerHTML: "<a href=\"" + shareIcon.url + "\" target=\"_blank\"><img src=\"" + shareIcon.iconUrl + "\" /></a>"
                         });
                         AmpShareService.registerSocialShareIconClick(iconNode, shareIcon);
                         if (shareIcon.validationUrl) {
-                            vjs.addClass(iconNode, AmpShareService.vjsHiddenClassName);
+                            videojs.addClass(iconNode, AmpShareService.vjsHiddenClassName);
                             AmpShareService.showSocialIconIfReachable(iconNode, shareIcon.validationUrl);
                         }
                         socialIconsContainer.appendChild(iconNode);
@@ -452,17 +454,17 @@ var Amp;
                 };
                 AmpShareService.updateLinkShare = function (component, options) {
                     if (options && options.isEnable) {
-                        vjs.removeClass(component.el().querySelector("." + AmpShareService.linkContainerClassName), AmpShareService.vjsHiddenClassName);
+                        videojs.removeClass(component.el().querySelector("." + AmpShareService.linkContainerClassName), AmpShareService.vjsHiddenClassName);
                     }
                     else {
-                        vjs.addClass(component.el().querySelector("." + AmpShareService.linkContainerClassName), AmpShareService.vjsHiddenClassName);
+                        videojs.addClass(component.el().querySelector("." + AmpShareService.linkContainerClassName), AmpShareService.vjsHiddenClassName);
                     }
-                    vjs.on(component.el().querySelector("." + AmpShareService.linkContainerClassName + " > button"), "click", function () {
+                    videojs.on(component.el().querySelector("." + AmpShareService.linkContainerClassName + " > button"), "click", function () {
                         AmpShareService.linkShareButtonClick(component);
                     });
                 };
                 AmpShareService.updateSharePanel = function (component, options) {
-                    vjs.on(component.el().querySelector(".vjs-sharepanel-close > a"), "click", function () {
+                    videojs.on(component.el().querySelector(".vjs-sharepanel-close > a"), "click", function () {
                         AmpShareService.panelCloseButtonClick(component);
                     });
                     if (!options) {
@@ -472,10 +474,10 @@ var Amp;
                     AmpShareService.updateSocialShare(component, options.socialShare);
                     AmpShareService.updateLinkShare(component, options.linkShare);
                     AmpShareService.updateEmbedShare(component, options.embedShare);
-                    vjs.on(component.el().querySelector("." + AmpShareService.copyConfirmPopupContainerClassName + " > button"), "click", function () {
+                    videojs.on(component.el().querySelector("." + AmpShareService.copyConfirmPopupContainerClassName + " > button"), "click", function () {
                         AmpShareService.popupCopyClick(component);
                     });
-                    vjs.on(component.el().querySelector("." + AmpShareService.copyConfirmPopupContainerClassName + " > a"), "click", function () {
+                    videojs.on(component.el().querySelector("." + AmpShareService.copyConfirmPopupContainerClassName + " > a"), "click", function () {
                         AmpShareService.popupCloseClick(component);
                     });
                 };
@@ -485,16 +487,16 @@ var Amp;
                     textArea.value = copyContent;
                     var label = component.el().querySelector("." + AmpShareService.copyConfirmPopupContainerClassName + " label");
                     label.textContent = title;
-                    vjs.removeClass(container, AmpShareService.vjsHiddenClassName);
+                    videojs.removeClass(container, AmpShareService.vjsHiddenClassName);
                 };
                 AmpShareService.getSharePanelTemplate = function (component) {
-                    return "\n<div class=\"vjs-sharepanel-controls\">\n\t<div class=\"vjs-sharepanel-header\">\n\t\t<div class=\"vjs-sharepanel-close\">\n\t\t\t<a href=\"javascript:void()\">\n\t\t\t\t<span class=\"vjs-sharepanel-close-image\"/>\n\t\t\t\t<span class=\"screen-reader-text\">" + vjs.util.htmlEncode(component.localize("Close")) + "</span>\n\t\t\t</a>\n\t\t</div>\n\t</div>\n\t<div class=\"vjs-shareoptions\">\n\t\t<div class=\"vjs-shareoptions-social\">\n\t\t\t<label>" + vjs.util.htmlEncode(component.localize("Share")) + "</label>\n\t\t\t<hr/>\n\t\t\t<div class=\"" + AmpShareService.socialIconsContainerClassName + " " + AmpShareService.vjsHiddenClassName + "\"></div>\n\t\t</div>\n\t\t<div class=\"vjs-sharepanel-bottom\">\n\t\t\t<div class=\"" + AmpShareService.linkContainerClassName + " " + AmpShareService.vjsHiddenClassName + "\">\n\t\t\t\t<label class=\"vjs-label\">" + vjs.util.htmlEncode(component.localize("Link")) + "</label>\n\t\t\t\t<hr/>\n\t\t\t\t<button>" + vjs.util.htmlEncode(component.localize("Copy Url")) + "</button>\n\n\t\t\t</div>\n\t\t\t<div class=\"" + AmpShareService.embedShareContainerClassName + " " + AmpShareService.vjsHiddenClassName + "\">\n\t\t\t\t<label>" + vjs.util.htmlEncode(component.localize("Embed")) + "</label>\n\t\t\t\t<hr/>\n\t\t\t\t<div class=\"" + AmpShareService.embedLinksContainerClassName + "\"></div>\n\t\t\t\t<button>" + vjs.util.htmlEncode(component.localize("Copy Url")) + "</button>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n    <div class=\"" + AmpShareService.copyConfirmPopupContainerClassName + " " + AmpShareService.vjsHiddenClassName + "\">\n        <a href=\"javascript:void()\">\n\t\t\t<span class=\"vjs-sharePopup-Closeimage\"/>\n\t\t\t<span class=\"screen-reader-text\">" + vjs.util.htmlEncode(component.localize("Close")) + "</span>\n        </a>\n\t\t<label></label>\n        <textarea>Error occur when try to copy content</textarea>\n\t\t<button>" + vjs.util.htmlEncode(component.localize("Copy")) + "</button>\n    </div>\n</div>";
+                    return "\n<div class=\"vjs-sharepanel-controls\">\n\t<div class=\"vjs-sharepanel-header\">\n\t\t<div class=\"vjs-sharepanel-close\">\n\t\t\t<a href=\"javascript:void()\">\n\t\t\t\t<span class=\"vjs-sharepanel-close-image\"/>\n\t\t\t\t<span class=\"screen-reader-text\">" + component.htmlEncode(component.localize("Close")) + "</span>\n\t\t\t</a>\n\t\t</div>\n\t</div>\n\t<div class=\"vjs-shareoptions\">\n\t\t<div class=\"vjs-shareoptions-social\">\n\t\t\t<label>" + component.htmlEncode(component.localize("Share")) + "</label>\n\t\t\t<hr/>\n\t\t\t<div class=\"" + AmpShareService.socialIconsContainerClassName + " " + AmpShareService.vjsHiddenClassName + "\"></div>\n\t\t</div>\n\t\t<div class=\"vjs-sharepanel-bottom\">\n\t\t\t<div class=\"" + AmpShareService.linkContainerClassName + " " + AmpShareService.vjsHiddenClassName + "\">\n\t\t\t\t<label class=\"vjs-label\">" + component.htmlEncode(component.localize("Link")) + "</label>\n\t\t\t\t<hr/>\n\t\t\t\t<button>" + component.htmlEncode(component.localize("Copy Url")) + "</button>\n\n\t\t\t</div>\n\t\t\t<div class=\"" + AmpShareService.embedShareContainerClassName + " " + AmpShareService.vjsHiddenClassName + "\">\n\t\t\t\t<label>" + component.htmlEncode(component.localize("Embed")) + "</label>\n\t\t\t\t<hr/>\n\t\t\t\t<div class=\"" + AmpShareService.embedLinksContainerClassName + "\"></div>\n\t\t\t\t<button>" + component.htmlEncode(component.localize("Copy Url")) + "</button>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n    <div class=\"" + AmpShareService.copyConfirmPopupContainerClassName + " " + AmpShareService.vjsHiddenClassName + "\">\n        <a href=\"javascript:void()\">\n\t\t\t<span class=\"vjs-sharePopup-Closeimage\"/>\n\t\t\t<span class=\"screen-reader-text\">" + component.htmlEncode(component.localize("Close")) + "</span>\n        </a>\n\t\t<label></label>\n        <textarea>Error occur when try to copy content</textarea>\n\t\t<button>" + component.htmlEncode(component.localize("Copy")) + "</button>\n    </div>\n</div>";
                 };
                 AmpShareService.showSocialIconIfReachable = function (iconNode, validationUrl) {
                     Share.SocialShareOnlineChecker.isSocialShareOnline(validationUrl, function () {
-                        vjs.removeClass(iconNode, AmpShareService.vjsHiddenClassName);
+                        videojs.removeClass(iconNode, AmpShareService.vjsHiddenClassName);
                     }, function () {
-                        vjs.addClass(iconNode, AmpShareService.vjsHiddenClassName);
+                        videojs.addClass(iconNode, AmpShareService.vjsHiddenClassName);
                     });
                 };
                 AmpShareService.registerSocialShareIconClick = function (iconNode, shareIconConfig) {
@@ -502,7 +504,7 @@ var Amp;
                     if (!trackingAlias) {
                         trackingAlias = Share.SocialShareType[shareIconConfig.shareType];
                     }
-                    vjs.on(iconNode, "click", function () {
+                    videojs.on(iconNode, "click", function () {
                         Share.defaultMessageLoggerMethod("AmpShare.socialShareIconClicked:" + trackingAlias, false);
                     });
                 };
@@ -539,4 +541,5 @@ var Amp;
        
         mediaPlayer.plugin("share", Amp.Plugin.Share.ampSharePlugin);
     })(window.amp));
+
 
