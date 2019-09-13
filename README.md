@@ -1,8 +1,14 @@
 ---
-services: media-services
-platforms: javascript
-author: 
+page_type: sample
+languages:
+- javascript
+- html
+products:
+- azure
+description: "This is an AMP plugin that enables the video viewer to share your content across multiple social networks."
+urlFragment: media-services-javascript-azure-media-player-social-share-plugin
 ---
+
 # Media Services: Share Plugin for Azure Media Player
 
 
